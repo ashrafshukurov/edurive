@@ -1,0 +1,8 @@
+security:
+  jwtSecret: 12dfmsc9a8w9c8wemcqw89mq92938rhfn4783co138jf3190jc
+  accessTokenExpirationInMs: 3600000
+  refreshTokenExpirationInMs: 86400000
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
