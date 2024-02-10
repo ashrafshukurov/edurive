@@ -33,6 +33,18 @@ public class SecurityConfig {
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final PasswordEncoder passwordEncoder;
 
+    private static final String[] AUTH_WHITELIST = {
+            "/api/v1/auth/**",
+            "/v3/api-docs/**",
+            "/v3/api-docs.yaml",
+            "/swagger-ui/**",
+            "/swagger-ui.html",
+            "/swagger-resources/**",
+            "/webjars/**",
+            "/v3/**",
+            "/swagger/**"
+    };
+
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
@@ -60,7 +72,7 @@ public class SecurityConfig {
                 .sessionManagement(httpSecuritySessionManagementConfigurer ->
                         httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth->auth.requestMatchers("/v1/user/**","/auth/**").permitAll())
-                .authorizeHttpRequests(auth->auth.requestMatchers("/v2/api-docs", "/swagger-resources/**", "/swagger-ui/**").permitAll())
+                .authorizeHttpRequests(auth->auth.requestMatchers(AUTH_WHITELIST).permitAll())
                 .authorizeHttpRequests(auth->auth.anyRequest().authenticated())
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

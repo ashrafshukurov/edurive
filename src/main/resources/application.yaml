@@ -2,7 +2,7 @@ server:
   port: 8082
 spring:
   profiles:
-    active: db,security
+    active: db,security,swagger
 
 logging:
   level:
