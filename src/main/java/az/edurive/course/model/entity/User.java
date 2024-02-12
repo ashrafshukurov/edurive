@@ -22,10 +22,11 @@ public class User {
     String gmail;
     @Column(nullable = false)
     String password;
-    String picture;
     @Enumerated(value = EnumType.STRING)
     @Column(name = "role_type", nullable = false)
     RoleType roleType;
+//    @Column(name = "phone_number")
+//    String phoneNumber;
 
 
 }

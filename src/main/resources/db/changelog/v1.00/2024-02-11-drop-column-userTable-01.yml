@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2024-02-11
+      author: Ashraf Shukurov
+      changes:
+        - dropColumn:
+            tableName: users
+            columnName: phone_number

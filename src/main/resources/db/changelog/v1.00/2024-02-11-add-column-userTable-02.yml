@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2024-02-11-02
+      author: Ashraf Shukurov
+      changes:
+        - addColumn:
+            tableName: users
+            columns:
+              - column:
+                  name: phone_number
+                  type: varchar(30)
+                  constraints:
+                    nullable: true

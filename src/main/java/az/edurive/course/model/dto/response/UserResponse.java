@@ -13,8 +13,8 @@ public class UserResponse {
     String surname;
     String gmail;
     String password;
-    String picture;
     RoleType roleType;
+//    String phoneNumber;
 
 
 }

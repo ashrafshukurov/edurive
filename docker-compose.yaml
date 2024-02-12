@@ -1,14 +1,36 @@
 version: '3.8'
+
 services:
   postgres-custom:
     image: postgres
     ports:
       - '5433:5432'
     environment:
+      - SCHEMA=public
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
     volumes:
       - db:/var/lib/postgres/data
+#    networks:
+#      - custom-network
+
+  edurive-app:
+    image: edurive:v13
+    ports:
+      - '8087:8085'
+    environment:
+      - HOST=postgres-custom
+    depends_on:
+      - postgres-custom
+
+
+#    networks:
+#      - custom-network
+
 volumes:
   db:
 
+networks:
+  custom-network:
+#    driver: bridge

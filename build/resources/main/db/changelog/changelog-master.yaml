@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include: 
+      file: db/changelog/v1.00/2024-02-11-drop-column-userTable-01.yml
+#  - include:
+#      file: db/changelog/v1.00/2024-02-11-add-column-userTable-02.yml
